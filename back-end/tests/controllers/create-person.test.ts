@@ -1,5 +1,5 @@
-import { CreatePersonController } from "../../src/server/controller/create-person/create-person";
-import { ApiRequest } from "../../src/server/controller/protocols";
+import { CreatePersonController } from "../../src/server/controllers/create-person/create-person";
+import { ApiRequest } from "../../src/server/controllers/protocols";
 import { MongoCreatePersonRepository } from "../../src/server/repositories/create-person/create-person";
 
 const reqMock: ApiRequest = {
