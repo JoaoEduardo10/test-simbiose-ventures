@@ -1,13 +1,13 @@
 import "express-async-errors";
 import express from "express";
 import { globalsErrors } from "./middlewares/globals-errors";
-import { Bad_Request } from "./errors/api-errors";
+import { router } from "./router";
 
 const server = express();
 
-server.get("/", () => {
-  throw new Bad_Request("test");
-});
+server.use(express.json());
+
+server.use("/v1", router);
 
 server.use(globalsErrors);
 
