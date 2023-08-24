@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { MongoCreatePersonRepository } from "../repositories/create-person/create-person";
-import { CreatePersonController } from "../controller/create-person/create-person";
+import { CreatePersonController } from "../controllers/create-person/create-person";
 
 class CreatePersonRouter {
   async create(req: Request, res: Response) {
