@@ -6,7 +6,7 @@ class MongoDb {
   private password: string;
 
   constructor() {
-    this.url = process.env.MONGODB_URL || "";
+    this.url = process.env.MONGODB_URL || process.env.MONGODB_URL_ATLAS || "";
     this.password = process.env.MONGODB_PASSWORD || "";
     this.username = process.env.MONGODB_USER || "";
   }
@@ -14,7 +14,9 @@ class MongoDb {
   async connect(): Promise<void> {
     mongoose.set("strictQuery", false);
 
-    await mongoose.connect(this.url);
+    await mongoose.connect(this.url, {
+      auth: { username: this.username, password: this.password },
+    });
   }
 }
 

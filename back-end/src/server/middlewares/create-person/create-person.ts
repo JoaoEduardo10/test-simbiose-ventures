@@ -42,7 +42,7 @@ class CreatePersonMiddleware {
       throw new Bad_Request("formato de email invalido");
     }
 
-    const person = await Person.findOne({ email });
+    const person = await Person.findOne({ email: email });
 
     if (person) {
       throw new Bad_Request("email já cadastrado");
