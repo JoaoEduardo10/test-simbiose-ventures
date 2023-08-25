@@ -28,7 +28,7 @@ class UpdatePersonMiddleware {
       throw new Bad_Request("adicione no minino 4 letras ao nome");
     }
 
-    if (email || email.length == 0) {
+    if (email || email?.length == 0) {
       const isEmail = validator.isEmail(email);
 
       if (!isEmail) {
