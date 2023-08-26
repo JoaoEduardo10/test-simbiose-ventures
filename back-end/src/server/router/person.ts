@@ -5,6 +5,8 @@ import { GetPersonRouter } from "../usecase/get-person";
 import { GetPersonMiddleware } from "../middlewares/get-person/get-person";
 import { UpdatePersonRouter } from "../usecase/update-person";
 import { UpdatePersonMiddleware } from "../middlewares/update-person/update-person";
+import { DeletePersonMiddleware } from "../middlewares/delete-person/delete-person";
+import { DeletePersonRouter } from "../usecase/delete-person";
 
 const personRouter = Router();
 
@@ -33,6 +35,15 @@ personRouter.put(
   "/pessoa/:id",
   updatePersonMiddleware.middleware,
   updatePersonRouter.update
+);
+
+const deletePersonMiddleware = new DeletePersonMiddleware();
+const deletePersonRouter = new DeletePersonRouter();
+
+personRouter.delete(
+  "/pessoa/:id",
+  deletePersonMiddleware.middleware,
+  deletePersonRouter.delete
 );
 
 export { personRouter };
