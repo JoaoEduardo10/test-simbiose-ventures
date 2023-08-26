@@ -1,0 +1,370 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Api para o teste da Simbiose",
+    "deacription": "Essa API cria, busca, faz o update e deleta pessoas do banco de dados",
+    "termsOfService": "Use com moderação",
+    "contact": {
+      "email": "joaoeduardoj920@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8000/v1/",
+      "description": "Api de desenvolvimento"
+    }
+  ],
+  "paths": {
+    "/pessoa": {
+      "post": {
+        "summary": "Cria uma pessoa",
+        "description": "esta rota será responsavel por criar uma pessoa",
+        "tags": ["Pessoa"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/Person"
+              },
+              "example": {
+                "data": {
+                  "name": "eduardo",
+                  "email": "joaoeduardo@gmail.com",
+                  "birth_date": "07/10/2003"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400-name": {
+            "description": "se não adicionar o nome",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "adicione um name 'nome'"
+                }
+              }
+            }
+          },
+          "400-name-legth": {
+            "description": "se a soma das letra do nome for menor que 4",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "adicione ao nome pelo menos 4 letras"
+                }
+              }
+            }
+          },
+          "400-birth_date-one": {
+            "description": "birth_date (caso não adicone uma adata de nacimento)",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "adicione um birth_date 'data de nacimento"
+                }
+              }
+            }
+          },
+          "400-birth_date-two": {
+            "description": "birth_date (se a data de nacimento for diferente do formato: AA/MM/DDDD)",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "formato de data incorretor. ex: 07/10/2003"
+                }
+              }
+            }
+          },
+          "400-email": {
+            "description": "caso não adicone um email",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "adicione um email"
+                }
+              }
+            }
+          },
+          "400-email-format": {
+            "description": "se o formato do email for invalido",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "formato de email invalido"
+                }
+              }
+            }
+          },
+          "400-email-registered": {
+            "description": "se o ja estiver cadastrado",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "email já cadastra"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Person"
+                },
+                "example": {
+                  "data": {
+                    "id": "342r392decdsc",
+                    "name": "eduardo",
+                    "email": "joaoeduardo@gmail.com",
+                    "birth_date": "07/10/2003"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Busca todos as pessoas criadas",
+        "description": "esta rota será responsavel por busca todos os usuários",
+        "tags": ["Pessoa"],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "data": [
+                    {
+                      "id": "342r392decdsc",
+                      "name": "eduardo",
+                      "email": "joaoeduardo@gmail.com",
+                      "birth_date": "07/10/2003"
+                    },
+                    {
+                      "id": "342r392decdsscvsd",
+                      "name": "calors",
+                      "email": "caloso@gmail.com",
+                      "birth_date": "11/01/2006"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pessoa/{id}": {
+      "get": {
+        "summary": "Busca uma pessoa pelo id",
+        "description": "esta rota será responsavel por busca uma pessoa",
+        "tags": ["Pessoa"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Buscar pessoa por id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "data": {
+                    "id": "342r392decdsc",
+                    "name": "eduardo",
+                    "email": "joaoeduardo@gmail.com",
+                    "birth_date": "07/10/2003"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Este erro pode surgir quando um ID aleatório com menos de 24 caracteres é enviado, o que não está em conformidade com o formato exigido pelo MongoDB",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Cast to ObjectId failed for value xcsadxa (type string) at path id for model user"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Se o id for invalido!",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "id invalido!"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deleta uma pessoa do banco de dados",
+        "description": "esta rota será responsavel por deletar pessoas",
+        "tags": ["Pessoa"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Buscar pessoa por id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "sem responsta no body"
+          },
+          "500": {
+            "description": "Este erro pode surgir quando um ID aleatório com menos de 24 caracteres é enviado, o que não está em conformidade com o formato exigido pelo MongoDB",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Cast to ObjectId failed for value xcsadxa (type string) at path id for model user"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Se o id for invalido!",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "id invalido!"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Atualiza os dados de uma pessoa do banco de dados",
+        "description": "Esta rota será responsavel por atualizar os dados de uma pessoas",
+        "tags": ["Pessoa"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Buscar pessoa por id",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "name": "calors"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "sem responsta no body"
+          },
+          "400-birth_date": {
+            "description": "se enviar um formato de birth_date invalido.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "fomato de data errado. ex: 07/10/2003"
+                }
+              }
+            }
+          },
+          "400-name": {
+            "description": "se o a soma total das letra do nome for menor que 4",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "adicione no minino 4 letras ao nome3"
+                }
+              }
+            }
+          },
+          "400-email": {
+            "description": "se o email ja estiver sendo utilizado",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "email ja utilizado"
+                }
+              }
+            }
+          },
+          "400-email-format": {
+            "description": "se o formato do email for invalido",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "formato de email invalido"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Este erro pode surgir quando um ID aleatório com menos de 24 caracteres é enviado, o que não está em conformidade com o formato exigido pelo MongoDB",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Cast to ObjectId failed for value xcsadxa (type string) at path id for model user"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Se o id for invalido!",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "id invalido!"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Person": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "required": true
+          },
+          "email": {
+            "type": "string",
+            "required": true,
+            "unique": true
+          },
+          "birth_date": {
+            "type": "string",
+            "required": true
+          }
+        }
+      }
+    }
+  }
+}
