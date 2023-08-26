@@ -15,7 +15,7 @@ class CreatePersonMiddleware {
     const { birth_date, email, name } = req.body;
 
     if (!birth_date) {
-      throw new Bad_Request("adicione um birth_data 'data de nacimento'");
+      throw new Bad_Request("adicione um birth_date 'data de nacimento'");
     }
 
     const isDate = isValidDateFormat(birth_date);
