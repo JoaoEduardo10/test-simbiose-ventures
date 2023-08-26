@@ -7,6 +7,7 @@ import { UpdatePersonRouter } from "../usecase/update-person";
 import { UpdatePersonMiddleware } from "../middlewares/update-person/update-person";
 import { DeletePersonMiddleware } from "../middlewares/delete-person/delete-person";
 import { DeletePersonRouter } from "../usecase/delete-person";
+import { GetAllPeopleRouter } from "../usecase/get-all-people";
 
 const personRouter = Router();
 
@@ -45,5 +46,9 @@ personRouter.delete(
   deletePersonMiddleware.middleware,
   deletePersonRouter.delete
 );
+
+const getAllPeopleRouter = new GetAllPeopleRouter();
+
+personRouter.get("/pessoa", getAllPeopleRouter.get);
 
 export { personRouter };
