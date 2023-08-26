@@ -3,7 +3,7 @@ import { PersonDTO } from "../../interfaceDTO/person";
 import { IGetAllPeopleRepository } from "../../repositories/get-all-people/protocols";
 import { ApiRequest, ApiResponse, IControllers } from "../protocols";
 
-class GetAllPeopleRepository implements IControllers {
+class GetAllPeopleController implements IControllers {
   constructor(
     private readonly getAllPeopleRepository: IGetAllPeopleRepository
   ) {}
@@ -18,4 +18,4 @@ class GetAllPeopleRepository implements IControllers {
   }
 }
 
-export { GetAllPeopleRepository };
+export { GetAllPeopleController };
