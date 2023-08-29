@@ -1,0 +1,50 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Loading /> > should to match snapshot 1`] = `
+.c0 {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  top: 0;
+}
+
+.c1 {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  border: 0.4rem solid #227bd4;
+  border-top: 0.4rem solid transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: cicleOne infinite ease-in-out 1s;
+}
+
+.c2 {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 0.2rem solid green;
+  border-bottom: 0.2rem solid transparent;
+  animation: cicleTwo infinite ease-in-out reverse 300ms;
+}
+
+<button
+  aria-label="loading"
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2"
+    />
+  </div>
+</button>
+`;
