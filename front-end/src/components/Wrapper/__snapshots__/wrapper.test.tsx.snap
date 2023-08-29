@@ -1,0 +1,15 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Wrapper /> >  should to match snapshot 1`] = `
+.c0 {
+  background-color: #f9f9f9;
+  width: 100%;
+  height: 100vh;
+}
+
+<main
+  class="c0"
+>
+  children
+</main>
+`;
