@@ -1,0 +1,48 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<InputComponent /> > should to match snapshot  1`] = `
+.c0 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  width: 90%;
+}
+
+.c1 {
+  left: 0;
+  top: 0;
+  font-size: 1.4rem;
+  display: block;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.c2 {
+  height: 3rem;
+  width: 23rem;
+  outline: none;
+  padding: 0 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  border: 0.1rem solid #222;
+}
+
+<div
+  aria-label="input"
+  class="c0"
+>
+  <label
+    class="c1"
+    for="text"
+  >
+    name
+  </label>
+  <input
+    class="c2"
+    id="text"
+    placeholder="name"
+    type="text"
+    value="name"
+  />
+</div>
+`;
