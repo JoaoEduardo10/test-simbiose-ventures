@@ -1,0 +1,61 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Message /> > should to match snaptshot error 1`] = `
+.c0 {
+  position: fixed;
+  bottom: 20%;
+  left: 2%;
+  width: 35rem;
+  height: 8rem;
+  border: none;
+  padding: 1rem;
+  font-size: 1.4rem;
+  background-color: #FFFF;
+  color: #227bd4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+  border: 0.1rem solid red;
+  transform: translateX(50%);
+  opacity: 1;
+  animation: keyShow ease-in-out 300ms;
+}
+
+<div
+  class="c0"
+  role="alert"
+>
+  mensagem de error
+</div>
+`;
+
+exports[`<Message /> > should to match snaptshot ok 1`] = `
+.c0 {
+  position: fixed;
+  bottom: 20%;
+  left: 2%;
+  width: 35rem;
+  height: 8rem;
+  border: none;
+  padding: 1rem;
+  font-size: 1.4rem;
+  background-color: #FFFF;
+  color: #227bd4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+  border: 0.1rem solid green;
+  transform: translateX(50%);
+  opacity: 1;
+  animation: keyShow ease-in-out 300ms;
+}
+
+<div
+  class="c0"
+  role="alert"
+>
+  mensagem de ok
+</div>
+`;
