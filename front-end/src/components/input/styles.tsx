@@ -23,7 +23,7 @@ export const Label = styled.label<{ $touchedLabel: boolean }>`
 export const Input = styled.input<{ $touchedInput: boolean }>`
   ${({ theme, $touchedInput }) => css`
     height: 3rem;
-    width: 23rem;
+    width: 90%;
     outline: none;
     padding: 0 1rem;
     border-radius: 0.5rem;

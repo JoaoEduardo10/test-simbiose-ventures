@@ -1,6 +1,7 @@
 import { css, styled } from "styled-components";
 
 import { ButtonConteiner } from "../button/styles";
+import { InputConteiner } from "../input/styles";
 
 export const FormConteiner = styled.form`
   ${({ theme }) => css`
@@ -8,7 +9,7 @@ export const FormConteiner = styled.form`
     display: flex;
     gap: 1rem;
     margin: 0 auto;
-    width: 60%;
+    width: 70%;
     height: 9rem;
     border-radius: 1rem;
     align-items: center;
@@ -18,6 +19,46 @@ export const FormConteiner = styled.form`
 
     ${ButtonConteiner} {
       margin-top: 1.2rem;
+    }
+
+    ${theme.media_screen_size.tablet} {
+      width: 80%;
+
+      ${InputConteiner} {
+        width: 95%;
+      }
+    }
+
+    ${theme.media_screen_size.phone} {
+      width: 80%;
+      height: 30rem;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      ${InputConteiner} {
+        width: 100%;
+
+        input {
+          width: 100%;
+        }
+      }
+    }
+
+    ${theme.media_screen_size.small_phones} {
+      width: 80%;
+      height: 30rem;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      ${InputConteiner} {
+        width: 100%;
+
+        input {
+          width: 100%;
+        }
+      }
     }
   `}
 `;

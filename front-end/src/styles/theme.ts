@@ -25,9 +25,10 @@ export const theme = {
     lapTop: "(max-width: 1500px)",
   },
   media_screen_size: {
-    phone: "@media (max-width: 780px)",
-    tablet: "@media (max-width: 950px) and (min-width: 781px)",
-    lapTop: "@media (max-width: 1500px) and (min-width: 951px)",
+    small_phones: "@media (max-width: 480px)",
+    phone: "@media (min-width: 481px) and (max-width: 767px)",
+    tablet: "@media (min-width: 768px) and (max-width: 1023px)",
+    lapTop: "@media (min-width: 1024px) and (max-width: 1500px)",
   },
   padding: {
     small: "1.6rem",
